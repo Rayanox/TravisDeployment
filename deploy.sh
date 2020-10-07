@@ -36,7 +36,11 @@ if [ -z "$processStarted" ] ; then echo "Process non execute" ; else echo "Proce
 echo " -> Starting application..."
 #java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
 #nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName &> $PATH_LIVRAISON_CIBLE/logStart.txt 2>&1 </dev/null &
-java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
+
+nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
 disown
-cat $PATH_LIVRAISON_CIBLE/logStart.txt
+ls $PATH_LIVRAISON_CIBLE
+
+
+cat "$PATH_LIVRAISON_CIBLE/logStart.txt"
 echo " -> Done."
