@@ -26,7 +26,7 @@ ps aux | grep "$jarName"
 
 
 echo " -> Getting PID already started..."
-processStarted=`ps aux | grep "$jarName" | awk '{if($11 != "grep") {print $2} }'` 
+processStarted=`ps aux | grep "$jarName" | awk '{if($11 != "grep" && $11 != "bash") {print $2} }'` 
 checkError
 
 echo "processStarted = $processStarted"
