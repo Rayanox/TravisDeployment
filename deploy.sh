@@ -21,6 +21,7 @@ PATH_LIVRAISON_CIBLE=$(sed "s#~#.#" <<< "$argument2")
 echo " -> jarName = $jarName"
 echo " -> PATH_LIVRAISON_CIBLE = $PATH_LIVRAISON_CIBLE"
 
+# Logs
 echo " -> ps et grep ="
 ps aux | grep "$jarName"
 
@@ -35,17 +36,10 @@ checkError
 
 if [ -z "$processStarted" ] ; then echo "Process non execute" ; else echo "Process deja en cours d'execution, kill maintenant..." && kill $processStarted ; fi
 echo " -> Starting application..."
-#java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
-#nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName &> $PATH_LIVRAISON_CIBLE/logStart.txt 2>&1 </dev/null &
 
+#java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
 nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
 disown
-ls $PATH_LIVRAISON_CIBLE
-
-echo " -> Who ?"
-who
-echo " -> Pwd :"
-pwd
 
 cat "$PATH_LIVRAISON_CIBLE/logStart.txt"
 echo " -> Done."
