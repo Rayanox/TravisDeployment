@@ -15,7 +15,7 @@ function checkError() {
 
 
 # The arguments are replaced by deploying Travis script
-jarName="$argument1"
+jarName= sed "s#~#.#" <<< "$argument1"
 PATH_LIVRAISON_CIBLE="$argument2"
 
 echo " -> jarName = $jarName"
