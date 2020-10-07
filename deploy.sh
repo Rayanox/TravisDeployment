@@ -19,6 +19,7 @@ jarName="$argument1"
 PATH_LIVRAISON_CIBLE= sed "s#~#.#" <<< "$argument2"
 
 echo " -> jarName = $jarName"
+echo " -> PATH_LIVRAISON_CIBLE = $PATH_LIVRAISON_CIBLE"
 
 echo " -> ps et grep ="
 ps aux | grep "$jarName"
