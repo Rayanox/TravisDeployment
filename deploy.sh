@@ -18,6 +18,13 @@ function checkError() {
 jarName="$argument1"
 PATH_LIVRAISON_CIBLE="$argument2"
 
+echo " -> jarName = $jarName"
+
+echo " -> ps et grep ="
+ps aux | grep "$jarName"
+
+
+
 echo " -> Getting PID already started..."
 processStarted=`ps aux | grep "$jarName" | awk '{if($11 != "grep") {print $2} }'` 
 checkError
