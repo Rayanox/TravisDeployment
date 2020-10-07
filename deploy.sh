@@ -41,6 +41,10 @@ nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.
 disown
 ls $PATH_LIVRAISON_CIBLE
 
+echo " -> Who ?"
+who
+echo " -> Pwd :"
+pwd
 
 cat "$PATH_LIVRAISON_CIBLE/logStart.txt"
 echo " -> Done."
