@@ -35,5 +35,6 @@ checkError
 if [ -z "$processStarted" ] ; then echo "Process non execute" ; else echo "Process deja en cours d'execution, kill maintenant..." && kill $processStarted ; fi
 echo " -> Starting application..."
 #java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
-nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
+nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName &> $PATH_LIVRAISON_CIBLE/logStart.txt &
+cat $PATH_LIVRAISON_CIBLE/logStart.txt
 echo " -> Done."
