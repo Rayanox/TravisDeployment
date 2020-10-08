@@ -1,6 +1,10 @@
 #!/bin/bash
 
 
+echo " --- Demarrage du script de deploiement dans Travis --- "
+pwd -l
+ls
+echo " --- Suite --- "
 
 
 # Arguments
