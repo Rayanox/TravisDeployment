@@ -21,7 +21,8 @@ deploy:
   # on:
     # tags: true
   script: >-
-    ls
+    echo "PROJECT_FOLDER_NAME = $PROJECT_FOLDER_NAME"
+    && ls
     && (cd $PROJECT_FOLDER_NAME || travis_terminate 1)
     && ls
 
