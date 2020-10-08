@@ -18,7 +18,8 @@ deploy:
     tags: true
   script:
     # ------- CI SIDE (Travis) ----------
-    - |- 
+    -  curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL && ls
+       <#
        cd $PROJECT_FOLDER_NAME || travis_terminate 1
        mvn clean package || travis_terminate 1
        cd target || travis_terminate 1
@@ -39,3 +40,4 @@ deploy:
        sshpass -p "$PASSWORD_MY_SERVER" scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./$jarName $LOGIN_MY_SERVER@$IP_MY_SERVER:$PATH_LIVRAISON_CIBLE || travis_terminate 1
 
        echo y | plink -ssh $LOGIN_MY_SERVER@$IP_MY_SERVER -pw $PASSWORD_MY_SERVER -m ./$PATH_DEPLOYMENT_FILE  || travis_terminate 1
+#>
