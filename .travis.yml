@@ -21,30 +21,5 @@ deploy:
   # on:
     # tags: true
   script: >-
-    # ------- CI SIDE (Travis) ----------
-      curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL
-      && echo "ls"
-      && ls   
-      && echo "Bliboi" > Rayanus.txt
-      && cat Rayanus.txt
-       # cd $PROJECT_FOLDER_NAME || travis_terminate 1
-       # mvn clean package || travis_terminate 1
-       # cd target || travis_terminate 1
-       # jarName=`ls *.jar` || travis_terminate 1
-
-       # deploymentCible=$PATH_LIVRAISON_CIBLE
-       # echo "deploymentCible = $deploymentCible"
-       # echo "PATH_LIVRAISON_CIBLE = $PATH_LIVRAISON_CIBLE"
-
-       # Import du script de deploiement sur le serveur + remplacement des arguments du script
-       # curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL || travis_terminate 1
-       # sed -i "s/\$argument1/$jarName/" $PATH_DEPLOYMENT_FILE   || travis_terminate 1
-       # sed -i "s#\$argument2#$PATH_LIVRAISON_CIBLE#" $PATH_DEPLOYMENT_FILE   || travis_terminate 1
-
-       # ------- SERVER SIDE ----------
-
-       # sshpass -p "$PASSWORD_MY_SERVER" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $LOGIN_MY_SERVER@$IP_MY_SERVER "rm -f $PATH_LIVRAISON_CIBLE/*.jar" || travis_terminate 1
-       # sshpass -p "$PASSWORD_MY_SERVER" scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./$jarName $LOGIN_MY_SERVER@$IP_MY_SERVER:$PATH_LIVRAISON_CIBLE || travis_terminate 1
-
-       # echo y | plink -ssh $LOGIN_MY_SERVER@$IP_MY_SERVER -pw $PASSWORD_MY_SERVER -m ./$PATH_DEPLOYMENT_FILE  || travis_terminate 1
+    ls -l
 
