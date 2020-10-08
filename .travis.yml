@@ -18,8 +18,19 @@ script:
 deploy:
   provider: script
   cleanup: true
-  # on:
-    # tags: true
   script: >-
-    pwd && ls -l
+    jarName=`ls *.jar`
+
+    && deploymentCible=$PATH_LIVRAISON_CIBLE
+    && echo "deploymentCible = $deploymentCible"
+    && echo "PATH_LIVRAISON_CIBLE = $PATH_LIVRAISON_CIBLE"
+       
+    && curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL
+    && sed -i "s/\$argument1/$jarName/" $PATH_DEPLOYMENT_FILE
+    && sed -i "s#\$argument2#$PATH_LIVRAISON_CIBLE#" $PATH_DEPLOYMENT_FILE
+
+    && sshpass -p "$PASSWORD_MY_SERVER" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $LOGIN_MY_SERVER@$IP_MY_SERVER "rm -f $PATH_LIVRAISON_CIBLE/*.jar"
+    && sshpass -p "$PASSWORD_MY_SERVER" scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./$jarName $LOGIN_MY_SERVER@$IP_MY_SERVER:$PATH_LIVRAISON_CIBLE
+
+    && echo y | plink -ssh $LOGIN_MY_SERVER@$IP_MY_SERVER -pw $PASSWORD_MY_SERVER -m ./$PATH_DEPLOYMENT_FILE
 
