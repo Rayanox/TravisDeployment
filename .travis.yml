@@ -21,5 +21,6 @@ deploy:
   # on:
     # tags: true
   script: >-
-    ls -l
+    echo "testRayane" > BIBI.txt
+    && ls -l
 
