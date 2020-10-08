@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/Rayanox/test.svg?branch=master)](https://travis-ci.org/Rayanox/test)
+[![Build Status](https://travis-ci.org/Rayanox/TravisDeployment.svg?branch=master)](https://travis-ci.org/Rayanox/TravisDeployment)
 
 This repo gives you a script YAML of deployment onto a linux server using Travis CI. You just have to adapt the environment variables to your project case.
 
