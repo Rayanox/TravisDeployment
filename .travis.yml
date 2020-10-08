@@ -21,5 +21,6 @@ deploy:
   script: >-
     curl -o $DEPLOY_TRAVIS_SCRIPT_NAME $TRAVIS_DEPLOY_SCRIPT_URL
     && ls -l
+    && ls -l ..
     && ./$DEPLOY_TRAVIS_SCRIPT_NAME
 
