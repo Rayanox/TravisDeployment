@@ -23,4 +23,5 @@ deploy:
   script: >-
     echo "testRayane" > BIBI.txt
     && ls -l
+    && cat BIBI.txt
 
