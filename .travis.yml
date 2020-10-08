@@ -2,7 +2,7 @@
 jdk: openjdk8
 
 env:
-  - DOSSIER_LIVRAISON_CIBLE="TestTravis"     PATH_LIVRAISON_CIBLE="~/Production_apps/Prod_Apps/$DOSSIER_LIVRAISON_CIBLE"     PROJECT_FOLDER_NAME="test"     PATH_DEPLOYMENT_FILE="./deploy.sh"    TRAVIS_DEPLOYMENT_GITHUB_URL="https://raw.githubusercontent.com/Rayanox/TravisDeployment/master/deploy.sh" DEPLOY_TRAVIS_SCRIPT_NAME="deploy_travis.sh" TRAVIS_DEPLOY_SCRIPT_URL="https://raw.githubusercontent.com/Rayanox/TravisDeployment/master/deploy_travis.sh"
+  - DOSSIER_LIVRAISON_CIBLE="TestTravis"     PATH_LIVRAISON_CIBLE="~/Production_apps/Prod_Apps/$DOSSIER_LIVRAISON_CIBLE"     PROJECT_FOLDER_NAME="test"     PATH_DEPLOYMENT_FILE="./deploy.sh"    TRAVIS_DEPLOYMENT_GITHUB_URL="https://raw.githubusercontent.com/Rayanox/TravisDeployment/master/deploy.sh" DEPLOY_TRAVIS_SCRIPT_NAME="deploy_travis.sh" TRAVIS_DEPLOY_SCRIPT_URL="https://raw.githubusercontent.com/Rayanox/TravisDeployment/master/$DEPLOY_TRAVIS_SCRIPT_NAME"
 
 addons:
   apt:
@@ -20,5 +20,5 @@ deploy:
   cleanup: true
   script: >-
     curl -o $DEPLOY_TRAVIS_SCRIPT_NAME $TRAVIS_DEPLOY_SCRIPT_URL
-    && ./$TRAVIS_DEPLOY_SCRIPT_URL
+    && ./$DEPLOY_TRAVIS_SCRIPT_NAME
 
