@@ -41,7 +41,7 @@ echo " -> Starting application..."
 #nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
 cd $PATH_LIVRAISON_CIBLE
 # nohup java -jar ./$jarName &
-java -jar ./$jarName &
+java -jar ./$jarName > /dev/null 2&>1
 disown
 
 #cat "$PATH_LIVRAISON_CIBLE/logStart.txt"
