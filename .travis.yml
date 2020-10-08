@@ -15,12 +15,19 @@ script:
   - cd $PROJECT_FOLDER_NAME
   - mvn clean package
 
+before_deploy:
+  - cd target
+  - curl -o $DEPLOY_TRAVIS_SCRIPT_NAME $TRAVIS_DEPLOY_SCRIPT_URL
+  - chmod u+x ./$DEPLOY_TRAVIS_SCRIPT_NAME
+
 deploy:
   provider: script
-  cleanup: true
   script: >-
-    curl -o $DEPLOY_TRAVIS_SCRIPT_NAME $TRAVIS_DEPLOY_SCRIPT_URL
+    echo "   --- ls ---"
     && ls -l
+    && echo "   --- ls .. ---"
     && ls -l ..
-    && bash ./$DEPLOY_TRAVIS_SCRIPT_NAME
+    && echo "   --- ls ../.. ---"
+    && ls -l ../..
+    && ./$DEPLOY_TRAVIS_SCRIPT_NAME
 
