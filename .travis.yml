@@ -18,12 +18,13 @@ script:
 deploy:
   provider: script
   cleanup: true
-  on:
-    tags: true
+  # on:
+    # tags: true
   script:
     # ------- CI SIDE (Travis) ----------
     -  curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL && ls
-       
+    - echo "ls"
+    - ls   
        # cd $PROJECT_FOLDER_NAME || travis_terminate 1
        # mvn clean package || travis_terminate 1
        # cd target || travis_terminate 1
