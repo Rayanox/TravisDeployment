@@ -11,6 +11,10 @@ addons:
     - sshpass
     - plink
 
+script:
+  - echo " -> ls"
+  - ls
+
 deploy:
   provider: script
   cleanup: true
