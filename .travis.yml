@@ -20,13 +20,13 @@ deploy:
   cleanup: true
   # on:
     # tags: true
-  script:
+  script: >-
     # ------- CI SIDE (Travis) ----------
-    -  curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL && ls
-    - echo "ls"
-    - echo "Bliboi" > Rayanus.txt
-    - ls   
-    - cat Rayanus.txt
+      curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL
+      && echo "ls"
+      && ls   
+      && echo "Bliboi" > Rayanus.txt
+      && cat Rayanus.txt
        # cd $PROJECT_FOLDER_NAME || travis_terminate 1
        # mvn clean package || travis_terminate 1
        # cd target || travis_terminate 1
