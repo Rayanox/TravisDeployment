@@ -46,3 +46,4 @@ disown
 
 #cat "$PATH_LIVRAISON_CIBLE/logStart.txt"
 echo " -> Done."
+exit 0
