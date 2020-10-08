@@ -2,7 +2,7 @@
 jdk: openjdk8
 
 env:
-  - DOSSIER_LIVRAISON_CIBLE="TestTravis"     PATH_LIVRAISON_CIBLE="~/Production_apps/Prod_Apps/$DOSSIER_LIVRAISON_CIBLE"     PROJECT_FOLDER_NAME="test"     PATH_DEPLOYMENT_FILE="./deploy.sh"    TRAVIS_DEPLOYMENT_GITHUB_URL="https://raw.githubusercontent.com/Rayanox/TravisDeployment/master/deploy.sh"
+  - DOSSIER_LIVRAISON_CIBLE="TestTravis"     PATH_LIVRAISON_CIBLE="~/Production_apps/Prod_Apps/$DOSSIER_LIVRAISON_CIBLE"     PROJECT_FOLDER_NAME="test"     PATH_DEPLOYMENT_FILE="./deploy.sh"    TRAVIS_DEPLOYMENT_GITHUB_URL="https://raw.githubusercontent.com/Rayanox/TravisDeployment/master/deploy.sh" DEPLOY_TRAVIS_SCRIPT_NAME="deploy_travis.sh" TRAVIS_DEPLOY_SCRIPT_URL="https://raw.githubusercontent.com/Rayanox/TravisDeployment/master/deploy_travis.sh"
 
 addons:
   apt:
@@ -19,18 +19,6 @@ deploy:
   provider: script
   cleanup: true
   script: >-
-    jarName=`ls *.jar`
-
-    && deploymentCible=$PATH_LIVRAISON_CIBLE
-    && echo "deploymentCible = $deploymentCible"
-    && echo "PATH_LIVRAISON_CIBLE = $PATH_LIVRAISON_CIBLE"
-       
-    && curl -o $PATH_DEPLOYMENT_FILE $TRAVIS_DEPLOYMENT_GITHUB_URL
-    && sed -i "s/\$argument1/$jarName/" $PATH_DEPLOYMENT_FILE
-    && sed -i "s#\$argument2#$PATH_LIVRAISON_CIBLE#" $PATH_DEPLOYMENT_FILE
-
-    && sshpass -p "$PASSWORD_MY_SERVER" ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $LOGIN_MY_SERVER@$IP_MY_SERVER "rm -f $PATH_LIVRAISON_CIBLE/*.jar"
-    && sshpass -p "$PASSWORD_MY_SERVER" scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null ./$jarName $LOGIN_MY_SERVER@$IP_MY_SERVER:$PATH_LIVRAISON_CIBLE
-
-    && echo y | plink -ssh $LOGIN_MY_SERVER@$IP_MY_SERVER -pw $PASSWORD_MY_SERVER -m ./$PATH_DEPLOYMENT_FILE
+    curl -o $DEPLOY_TRAVIS_SCRIPT_NAME $TRAVIS_DEPLOY_SCRIPT_URL
+    && ./$TRAVIS_DEPLOY_SCRIPT_URL
 
