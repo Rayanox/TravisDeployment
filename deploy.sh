@@ -48,8 +48,8 @@ cd $PATH_LIVRAISON_CIBLE
 java -jar ./$jarName > ./logStart.txt &
 disown
 
-echo " -> Sleeping 5 seconds to wait for program starting"
-sleep 5
+echo " -> Sleeping 15 seconds to wait for program starting"
+sleep 15
 
 cat ./logStart.txt
 echo " -> Done."
