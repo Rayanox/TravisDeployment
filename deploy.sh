@@ -22,6 +22,8 @@ echo " -> jarName = $jarName"
 echo " -> PATH_LIVRAISON_CIBLE = $PATH_LIVRAISON_CIBLE"
 
 # Logs
+echo " -> pwd ="
+pwd
 echo " -> ps et grep ="
 ps aux | grep "$jarName"
 
@@ -39,11 +41,15 @@ echo " -> Starting application..."
 
 #java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
 #nohup java -jar $PATH_LIVRAISON_CIBLE/$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
-cd $PATH_LIVRAISON_CIBLE
 # nohup java -jar ./$jarName &
 # java -jar ./$jarName > /dev/null &
-java -jar ./$jarName > $PATH_LIVRAISON_CIBLE/logStart.txt &
+
+cd $PATH_LIVRAISON_CIBLE
+java -jar ./$jarName > ./logStart.txt &
 disown
 
-#cat "$PATH_LIVRAISON_CIBLE/logStart.txt"
+echo " -> Sleeping 5 seconds to wait for program starting"
+sleep 5
+
+cat ./logStart.txt
 echo " -> Done."
